@@ -8,7 +8,7 @@ class Ghost
 public:
 	Ghost();
 	Ghost(int x, int y, char symbol);
-	void setGhostPosition(Map map);
+	void setGhostPosition(Map *map);
 	int x;
 	int y;
 	char symbol;

@@ -39,28 +39,28 @@ void Player::getPlayerInput()
 
 }
 
-void Player::setPlayerPosition(Map map)
+void Player::setPlayerPosition(Map *map)
 {
 	int temp_x = this->x + this->input.x;
 	int temp_y = this->y + this->input.y;
 
-	switch (map.getPoint(temp_x, temp_y))
+	switch (map->getPoint(temp_x, temp_y))
 	{
 	case '.':
-		map.setPoint(temp_x, temp_y, ' ');
+		map->setPoint(temp_x, temp_y, ' ');
 		this->score += 10;
 		this->x += this->input.x;
 		this->y += this->input.y;
 		break;
 
 	case ' ':
-		map.setPoint(temp_x, temp_y, ' ');
+		map->setPoint(temp_x, temp_y, ' ');
 		this->x += this->input.x;
 		this->y += this->input.y;
 		break;
 
 	case '0':
-		map.setPoint(temp_x, temp_y, ' ');
+		map->setPoint(temp_x, temp_y, ' ');
 		this->score += 100;
 		this->x += this->input.x;
 		this->y += this->input.y;

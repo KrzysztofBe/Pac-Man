@@ -10,7 +10,7 @@ class Game
 public:
 	Game();
 	Ghost ghost;
-	Map map;
+	Map *map;
 	Player player;
 	void start();
 	bool mainLoop;

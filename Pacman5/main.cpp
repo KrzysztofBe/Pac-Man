@@ -5,13 +5,20 @@ using namespace std;
 
 int main()
 {
-	srand(time(NULL));
+	try {
+		srand(time(NULL));
 
-	Game game;
-	game.addGhost(13, 14, 'I');
-	game.addGhost(14, 15, 'P');
-	game.addGhost(15, 14, 'Z');
-	game.start();
+		Game game;
+		game.addGhost(13, 14, 'I');
+		game.addGhost(14, 15, 'P');
+		game.addGhost(15, 14, 'Z');
+		game.start();
 
-	return 0;
+		return 0;
+	}
+	catch (const char *e) {
+		cout << "Error: " << e << endl;
+		system("pause");
+	}
+
 }

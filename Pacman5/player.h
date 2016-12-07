@@ -12,7 +12,7 @@ public:
 	char symbol;
 	int score;
 	void getPlayerInput();
-	void setPlayerPosition(Map map);
+	void setPlayerPosition(Map *map);
 	Input input, oldInput;
 };
 #endif

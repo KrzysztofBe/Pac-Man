@@ -2,7 +2,7 @@
 
 Game::Game()
 {
-	this->map = map;
+	this->map = new Map();
 	this->player = player;
 	this->mainLoop = true;
 }
@@ -21,7 +21,7 @@ void Game::start()
 		}
 		this->player.getPlayerInput();
 		this->player.setPlayerPosition(this->map);
-		this->map.draw(this->ghosts, this->player);
+		this->map->draw(this->ghosts, this->player);
 	}
 }
 
