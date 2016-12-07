@@ -1,10 +1,11 @@
 #include <iostream>
 #include <vector>
+#include <fstream>
 #include "windows.h"
 #include "map.h"
 #include "ghost.h"
 #include "player.h"
-////////////////////////////////////
+
 using namespace std;
 char Map::mapBoard[Map::map_size_y][Map::map_size_x] = {
 	"______________________________",
@@ -40,6 +41,11 @@ char Map::mapBoard[Map::map_size_y][Map::map_size_x] = {
 	"||__________________________||"
 };
 
+Map::Map()
+{
+	ifstream file;
+	file.open("map.txt");
+}
 
 bool Map::isPointAccessible(int x, int y)
 {

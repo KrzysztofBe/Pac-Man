@@ -6,11 +6,13 @@ class Player;
 class Ghost;
 #include "ghost.h"
 #include "player.h"
+#include <fstream>
 using namespace std;
 
 class Map
 {
 public:
+	Map();
 	static const int map_size_y = 31;
 	static const int map_size_x = 32;
 	static char mapBoard[map_size_y][map_size_x];
