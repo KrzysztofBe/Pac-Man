@@ -1,5 +1,5 @@
 #include "game.h"
-
+//Komentarz
 Game::Game()
 {
 	this->map = map;
