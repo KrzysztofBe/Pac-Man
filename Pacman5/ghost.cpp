@@ -6,7 +6,7 @@
 
 Ghost::Ghost()
 {
-
+	this->outsideLair = false;
 }
 Ghost::Ghost(int x, int y, char symbol)
 {
@@ -42,10 +42,10 @@ void Ghost::setGhostPosition(Map *map, Ghost ghost) {
 bool Ghost::movedFromLair()
 {
 	if ((this->x == 13 && this->y == 14) || (this->x == 14 && this->y == 15) || (this->x == 15 && this->y == 14))
-		return false;
+		this->outsideLair = false;
 
 	else if ((this->x == 15 && this->y == 11) || (this->x == 16 && this->y == 11))
-		return true;
+		this->outsideLair = true;
 }
 
 bool Ghost::isDead(Ghost ghost)
@@ -60,7 +60,7 @@ bool Ghost::eaten(Ghost ghost, Player player)
 {
 	if ((player.x && player.y) == (ghost.x && ghost.y))
 	{
-		if (player.bonusStart == true)
+		if (player.bonus == true)
 		{
 			ghost.isDead;
 		}
