@@ -84,7 +84,9 @@ void Player::setPlayerPosition(Map *map)
 
 void Player::startBonus()
 {
-	bonusStart = time(NULL);
+	this->bonusStart = time(NULL);
+	this->hasBonus = true;
+	this->symbol = '©';
 }
 
 void Player::endBonus()
@@ -93,5 +95,6 @@ void Player::endBonus()
 	if ((currentTime - this->bonusStart) > 20) {
 		this->bonusStart = 0;
 		this->hasBonus = false;
+		this->symbol = 'C';
 	}
 }

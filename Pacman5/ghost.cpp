@@ -39,12 +39,12 @@ void Ghost::setGhostPosition(Map *map, Ghost ghost) {
 	}
 }
 
-bool Ghost::movedFromLair(Ghost ghost)
+bool Ghost::movedFromLair()
 {
-	if ((ghost.x == 13 && ghost.y == 14) || (ghost.x == 14 && ghost.y == 15) || (ghost.x == 15 && ghost.y == 14))
+	if ((this->x == 13 && this->y == 14) || (this->x == 14 && this->y == 15) || (this->x == 15 && this->y == 14))
 		return false;
 
-	else if ((ghost.x == 15 && ghost.y == 11) || (ghost.x == 16 && ghost.y == 11))
+	else if ((this->x == 15 && this->y == 11) || (this->x == 16 && this->y == 11))
 		return true;
 }
 
@@ -60,7 +60,7 @@ bool Ghost::eaten(Ghost ghost, Player player)
 {
 	if ((player.x && player.y) == (ghost.x && ghost.y))
 	{
-		if (player.bonus == true)
+		if (player.bonusStart == true)
 		{
 			ghost.isDead;
 		}

@@ -9,7 +9,7 @@ public:
 	Ghost();
 	Ghost(int x, int y, char symbol);
 	void setGhostPosition(Map *map, Ghost ghost);
-	bool movedFromLair(Ghost ghost);
+	bool movedFromLair();
 	bool eaten(Ghost ghost, Player player);
 	bool isDead(Ghost ghost);
 	int x;
