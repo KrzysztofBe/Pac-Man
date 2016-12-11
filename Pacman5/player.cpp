@@ -3,6 +3,7 @@
 #include "player.h"
 #include "map.h"
 #include "input.h"
+#include <time.h>
 
 Player::Player()
 {
@@ -10,6 +11,8 @@ Player::Player()
 	this->y = 20;
 	this->score = 0;
 	this->symbol = 'C';
+	this->hasBonus = false;
+	this->bonusStart = 0;
 }
 
 void Player::getPlayerInput()
@@ -64,6 +67,7 @@ void Player::setPlayerPosition(Map *map)
 		this->score += 100;
 		this->x += this->input.x;
 		this->y += this->input.y;
+		this->startBonus();
 		break;
 
 	case '<':
@@ -78,8 +82,16 @@ void Player::setPlayerPosition(Map *map)
 	}
 }
 
-bool Player::bonus(Player player)
+void Player::startBonus()
 {
-	if((player.x && player.y) == '0')
+	bonusStart = time(NULL);
+}
 
+void Player::endBonus()
+{
+	time_t currentTime = time(NULL);
+	if ((currentTime - this->bonusStart) > 20) {
+		this->bonusStart = 0;
+		this->hasBonus = false;
+	}
 }

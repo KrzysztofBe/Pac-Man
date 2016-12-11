@@ -6,13 +6,16 @@ class Map;
 
 class Player
 {
+	int bonusStart;
 public:
 	Player();
 	int x, y;
 	char symbol;
 	int score;
+	bool hasBonus;
 	void getPlayerInput();
-	bool bonus(Player player);
+	void startBonus();
+	void endBonus();
 	void setPlayerPosition(Map *map);
 	Input input, oldInput;
 };
