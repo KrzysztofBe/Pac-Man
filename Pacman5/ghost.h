@@ -8,7 +8,10 @@ class Ghost
 public:
 	Ghost();
 	Ghost(int x, int y, char symbol);
-	void setGhostPosition(Map *map);
+	void setGhostPosition(Map *map, Ghost ghost);
+	bool movedFromLair(Ghost ghost);
+	bool eaten(Ghost ghost, Player player);
+	bool isDead(Ghost ghost);
 	int x;
 	int y;
 	char symbol;

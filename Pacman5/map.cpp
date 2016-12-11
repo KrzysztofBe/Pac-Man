@@ -24,26 +24,37 @@ Map::Map()
 		}
 		i++;
 	}
-	//row.size() zwraca nam dlugosc lancucha znakow
+	//row.size() zwraca dlugosc lancucha znakow
 	//w zmiennej "j" trzymamy aktualna pozycje
 }
 
-bool Map::isPointAccessible(int x, int y)
-{
+bool Map::isPointAccessible(int x, int y, Ghost ghost) {
+	char point = this->mapBoard[y][x];
+
+	if (point == '.' || point == ' ' || point == '0')
+		return true;
+	else if (point == '+' && ghost.movedFromLair)
+		return false;
+	else if (point == '+' && ghost.isDead)
+		return true;
+	else
+		return false;
+}
+
+bool Map::isPointAccessible(int x, int y, Player player) {
 	char point = this->mapBoard[y][x];
 
 	if (point == '.' || point == ' ' || point == '0')
 		return true;
 	else
 		return false;
-
 }
+
 
 char Map::getPoint(int x, int y)
 {
 	char point = this->mapBoard[y][x];
 	return point;
-
 }
 
 void Map::setPoint(int x, int y, char symbol)

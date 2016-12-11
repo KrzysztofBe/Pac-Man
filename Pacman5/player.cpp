@@ -77,3 +77,9 @@ void Player::setPlayerPosition(Map *map)
 	default: this->input = this->oldInput;
 	}
 }
+
+bool Player::bonus(Player player)
+{
+	if((player.x && player.y) == '0')
+
+}
