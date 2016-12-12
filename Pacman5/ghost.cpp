@@ -35,13 +35,13 @@ void Ghost::setGhostPosition(Map *map) {
 		break;
 	}
 
-	if (map->isPointAccessible(x, y, *this)) {
+	if (map->isPointAccessible(x, y, this)) {
 		this->x = x;
 		this->y = y;
 	}
 }
 
-bool Ghost::movedFromLair()
+void Ghost::movedFromLair()
 {
 	if ((this->x == 13 && this->y == 14) || (this->x == 14 && this->y == 15) || (this->x == 15 && this->y == 14))
 		this->outsideLair = false;

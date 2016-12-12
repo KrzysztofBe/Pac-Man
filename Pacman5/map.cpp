@@ -28,14 +28,14 @@ Map::Map()
 	//w zmiennej "j" trzymamy aktualna pozycje
 }
 
-bool Map::isPointAccessible(int x, int y, Ghost ghost) {
+bool Map::isPointAccessible(int x, int y, Ghost *ghost) {
 	char point = this->mapBoard[y][x];
 
 	if (point == '.' || point == ' ' || point == '0' || point == '<' || point == '>')
 		return true;
-	else if (point == '+' && ghost.movedFromLair)
+	else if ((point == '+') && (ghost->movedFromLair))
 		return false;
-	else if (point == '+' && ghost.isDead)
+	else if (point == '+' && ghost->getDead())
 		return true;
 	else
 		return false;
