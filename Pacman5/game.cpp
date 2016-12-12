@@ -19,9 +19,9 @@ void Game::start()
 		for (vector<Ghost>::iterator it = this->ghosts.begin(); it != this->ghosts.end(); ++it) {
 			it->setGhostPosition(this->map);
 		}
-		this->player.getPlayerInput();
-		this->player.setPlayerPosition(this->map);
-		this->map->draw(this->ghosts, this->player);
+		this->player->getPlayerInput();
+		this->player->setPlayerPosition(this->map);
+		this->map->draw(this->ghosts, *this->player);
 	}
 }
 
