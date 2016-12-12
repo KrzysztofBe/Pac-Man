@@ -17,28 +17,49 @@ Ghost::Ghost(int x, int y, char symbol)
 	this->symbol = symbol;
 }
 
-void Ghost::setGhostPosition(Map *map) {
+void Ghost::setGhostPosition(Map *map, Player *player) {
 	int x = this->x;
 	int y = this->y;
-	switch (rand() % 4) {
-	case 0:
-		x += 1;
-		break;
-	case 1:
-		x -= 1;
-		break;
-	case 2:
-		y += 1;
-		break;
-	case 3:
-		y -= 1;
-		break;
+	int minIndex = 0;
+	int minValue = 1000;
+	int pointsToCheck[4][3] = {
+		{ this->x + 1, this->y, 1000 },
+		{ this->x - 1, this->y, 1000 },
+		{ this->x, this->y + 1, 1000 },
+		{ this->x, this->y - 1, 1000 } };
+	for (int i = 0; i < 4; i++) {
+		if (map->isPointAccessible(pointsToCheck[i][0], pointsToCheck[i][1], this) && this->outsideLair) {
+			pointsToCheck[i][2] = map->euclideanDistance(pointsToCheck[i][0], pointsToCheck[i][1], player->x, player->y);
+		}
 	}
+
+	for (int i = 0; i < 4; i++) {
+		if (pointsToCheck[i][2] < minValue) {
+			minValue = pointsToCheck[i][2];
+			minIndex = 0;
+		}
+	}
+
+	x = pointsToCheck[minIndex][0];
+	y = pointsToCheck[minIndex][1];
+	// switch (rand() % 4) {
+	// case 0:
+	//  x += 1;
+	//  break;
+	// case 1:
+	//  x -= 1;
+	//  break;
+	// case 2:
+	//  y += 1;
+	//  break;
+	// case 3:
+	//  y -= 1;
+	//  break;
+	// }
 
 	if (map->isPointAccessible(x, y, this)) {
 		this->x = x;
 		this->y = y;
-		this->movedFromLair();
 	}
 }
 

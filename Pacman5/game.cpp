@@ -17,13 +17,13 @@ void Game::start()
 {
 	while (this->mainLoop == true) {
 		for (vector<Ghost>::iterator it = this->ghosts.begin(); it != this->ghosts.end(); ++it) {
-			it->setGhostPosition(this->map);
-			this->player->endBonus();
+			it->setGhostPosition(this->map, this->player);
 		}
 		this->player->getPlayerInput();
 		this->player->setPlayerPosition(this->map);
 		this->map->draw(this->ghosts, *this->player);
 		this->detectCollisions();
+		this->player->endBonus();
 	}
 }
 

@@ -11,7 +11,7 @@ public:
 	Ghost();
 	Ghost(int x, int y, char symbol);
 	bool outsideLair;
-	void setGhostPosition(Map *map);
+	void setGhostPosition(Map *map, Player *player);
 	void movedFromLair();
 	void setDead(bool deadStatus);
 	bool getDead();
