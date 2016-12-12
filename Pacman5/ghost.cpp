@@ -45,6 +45,11 @@ void Ghost::setGhostPosition(Map *map, Player *player) {
 				pointsToCheck[i][2] = map->euclideanDistance(pointsToCheck[i][0], pointsToCheck[i][1], player->x, player->y);
 			}
 		}
+		else if (this->outsideLair) {
+			int xToGo = 15;
+			int yToGo = 11;
+			pointsToCheck[i][2] = map->euclideanDistance(pointsToCheck[i][0], pointsToCheck[i][1], xToGo, yToGo);
+		}
 	}
 
 	for (int i = 0; i < 4; i++) {
