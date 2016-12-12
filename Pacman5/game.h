@@ -14,6 +14,7 @@ public:
 	Player *player;
 	void start();
 	bool mainLoop;
+	void detectCollisions();
 	void stop();
 	vector<Ghost> ghosts;
 	void addGhost(int x, int y, char symbol);

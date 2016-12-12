@@ -18,14 +18,26 @@ void Game::start()
 	while (this->mainLoop == true) {
 		for (vector<Ghost>::iterator it = this->ghosts.begin(); it != this->ghosts.end(); ++it) {
 			it->setGhostPosition(this->map);
+			this->player->endBonus();
 		}
 		this->player->getPlayerInput();
 		this->player->setPlayerPosition(this->map);
 		this->map->draw(this->ghosts, *this->player);
+		this->detectCollisions();
 	}
 }
 
 void Game::stop()
 {
 	this->mainLoop = false;
+}
+
+void Game::detectCollisions()
+{
+	for (vector<Ghost>::iterator it = ghosts.begin(); it != ghosts.end(); ++it) {
+		if ((this->player->x == it->x) && (this->player->y == it->y))
+		{
+			throw "Collision";
+		}
+	}
 }

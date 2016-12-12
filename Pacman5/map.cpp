@@ -28,12 +28,20 @@ Map::Map()
 	//w zmiennej "j" trzymamy aktualna pozycje
 }
 
+float Map::euclideanDistance(int x1, int y1, int x2, int y2)
+{
+	float wynik;
+	wynik = sqrt((x2 - x1)*(x2 - x1) + (y2 - y1)*(y2 - y1));
+	
+	return wynik;
+}
+
 bool Map::isPointAccessible(int x, int y, Ghost *ghost) {
 	char point = this->mapBoard[y][x];
 
 	if (point == '.' || point == ' ' || point == '0' || point == '<' || point == '>')
 		return true;
-	else if ((point == '+') && (ghost->outsideLair))
+	else if ((point == '+') && (!ghost->outsideLair))
 		return false;
 	else if (point == '+' && ghost->getDead())
 		return true;

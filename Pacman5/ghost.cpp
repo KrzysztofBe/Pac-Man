@@ -38,6 +38,7 @@ void Ghost::setGhostPosition(Map *map) {
 	if (map->isPointAccessible(x, y, this)) {
 		this->x = x;
 		this->y = y;
+		this->movedFromLair();
 	}
 }
 

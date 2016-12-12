@@ -81,13 +81,13 @@ void Player::startBonus()
 {
 	this->bonusStart = time(NULL);
 	this->hasBonus = true;
-	this->symbol = '©';
+	this->symbol = '@';
 }
 
 void Player::endBonus()
 {
 	time_t currentTime = time(NULL);
-	if ((currentTime - this->bonusStart) > 20) {
+	if ((currentTime - this->bonusStart) > 12) {
 		this->bonusStart = 0;
 		this->hasBonus = false;
 		this->symbol = 'C';
