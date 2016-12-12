@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cstdlib>
 #include "ghost.h"
+#define M_PI 3.14159265
 
 Ghost::Ghost()
 {
@@ -28,44 +29,56 @@ void Ghost::setGhostPosition(Map *map, Player *player) {
 		{ this->x, this->y + 1, 1000 },
 		{ this->x, this->y - 1, 1000 } };
 
-  for (int i = 0; i < 4; i++) {
-	  if (map->isPointAccessible(pointsToCheck[i][0], pointsToCheck[i][1], this) && this->outsideLair) {
-		  pointsToCheck[i][2] = map->euclideanDistance(pointsToCheck[i][0], pointsToCheck[i][1], player->x, player->y);
-	  }
-  }
+	for (int i = 0; i < 4; i++) {
+		if (map->isPointAccessible(pointsToCheck[i][0], pointsToCheck[i][1], this) && this->outsideLair) {
+			if (player->hasBonus) {
+				float originSin = sin(180 * M_PI / 180);
+				float originCos = cos(180 * M_PI / 180);
+				int originX = 15;
+				int originY = 14;
+				int oppositePlayerX = floor((player->x - originX) * originCos - (player->y - originY) * originSin + originX);
+				int oppositePlayerY = floor((player->x - originX) * originSin + (player->y - originY) * originCos + originY);
 
-  for (int i = 0; i < 4; i++) {
-	  if (pointsToCheck[i][2] < minValue) {
-		  minValue = pointsToCheck[i][2];
-		  minIndex = 0;
-	  }
-  }
+				pointsToCheck[i][2] = -map->euclideanDistance(pointsToCheck[i][0], pointsToCheck[i][1], oppositePlayerX, oppositePlayerY);
+			}
+			else {
+				pointsToCheck[i][2] = map->euclideanDistance(pointsToCheck[i][0], pointsToCheck[i][1], player->x, player->y);
+			}
+		}
+	}
 
-  if (minIndex >= 0) {
-	  x = pointsToCheck[minIndex][0];
-	  y = pointsToCheck[minIndex][1];
-  }
-  else {
-	  switch (rand() % 4) {
-	  case 0:
-		  x += 1;
-		  break;
-	  case 1:
-		  x -= 1;
-		  break;
-	  case 2:
-		  y += 1;
-		  break;
-	  case 3:
-		  y -= 1;
-		  break;
-	  }
-  }
+	for (int i = 0; i < 4; i++) {
+		if (pointsToCheck[i][2] < minValue) {
+			minValue = pointsToCheck[i][2];
+			minIndex = i;
+		}
+	}
 
-  if (map->isPointAccessible(x, y, this)) {
-	  this->x = x;
-	  this->y = y;
-  }
+	if ((minIndex >= 0) && (rand() % 10) > 4) {
+		x = pointsToCheck[minIndex][0];
+		y = pointsToCheck[minIndex][1];
+	}
+	else {
+		switch (rand() % 4) {
+		case 0:
+			x += 1;
+			break;
+		case 1:
+			x -= 1;
+			break;
+		case 2:
+			y += 1;
+			break;
+		case 3:
+			y -= 1;
+			break;
+		}
+	}
+
+	if (map->isPointAccessible(x, y, this)) {
+		this->x = x;
+		this->y = y;
+	}
 }
 
 
