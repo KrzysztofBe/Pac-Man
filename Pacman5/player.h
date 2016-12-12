@@ -6,6 +6,7 @@ class Map;
 
 class Player
 {
+private:
 	int bonusStart;
 public:
 	Player();

@@ -5,14 +5,16 @@ class Map;
 
 class Ghost
 {
+private:
+	bool isDead;
 public:
 	Ghost();
 	Ghost(int x, int y, char symbol);
 	bool outsideLair;
 	void setGhostPosition(Map *map, Ghost ghost);
 	bool movedFromLair();
-	bool eaten(Ghost ghost, Player player);
-	bool isDead(Ghost ghost);
+	void setDead(bool deadStatus);
+	bool getDead();
 	int x;
 	int y;
 	char symbol;

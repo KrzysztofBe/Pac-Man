@@ -7,7 +7,9 @@
 Ghost::Ghost()
 {
 	this->outsideLair = false;
+	this->isDead = false;
 }
+
 Ghost::Ghost(int x, int y, char symbol)
 {
 	this->x = x;
@@ -48,21 +50,12 @@ bool Ghost::movedFromLair()
 		this->outsideLair = true;
 }
 
-bool Ghost::isDead(Ghost ghost)
+bool Ghost::getDead()
 {
-	if (ghost.eaten == true)
-	{
-		ghost.movedFromLair == false;
-	}
+	return this->isDead;
 }
 
-bool Ghost::eaten(Ghost ghost, Player player)
+void Ghost::setDead(bool deadStatus)
 {
-	if ((player.x && player.y) == (ghost.x && ghost.y))
-	{
-		if (player.bonus == true)
-		{
-			ghost.isDead;
-		}
-	}
+	this->isDead = deadStatus;
 }
