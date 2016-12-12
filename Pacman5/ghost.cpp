@@ -43,10 +43,7 @@ void Ghost::setGhostPosition(Map *map) {
 
 void Ghost::movedFromLair()
 {
-	if ((this->x == 13 && this->y == 14) || (this->x == 14 && this->y == 15) || (this->x == 15 && this->y == 14))
-		this->outsideLair = false;
-
-	else if ((this->x == 15 && this->y == 11) || (this->x == 16 && this->y == 11))
+	if ((this->x == 14 && this->y == 11) || (this->x == 15 && this->y == 11))
 		this->outsideLair = true;
 }
 
