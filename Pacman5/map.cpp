@@ -31,7 +31,7 @@ Map::Map()
 bool Map::isPointAccessible(int x, int y, Ghost ghost) {
 	char point = this->mapBoard[y][x];
 
-	if (point == '.' || point == ' ' || point == '0')
+	if (point == '.' || point == ' ' || point == '0' || point == '<' || point == '>')
 		return true;
 	else if (point == '+' && ghost.movedFromLair)
 		return false;
@@ -41,10 +41,10 @@ bool Map::isPointAccessible(int x, int y, Ghost ghost) {
 		return false;
 }
 
-bool Map::isPointAccessible(int x, int y, Player player) {
+bool Map::isPointAccessible(int x, int y, Player *player) {
 	char point = this->mapBoard[y][x];
 
-	if (point == '.' || point == ' ' || point == '0')
+	if (point == '.' || point == ' ' || point == '0' || point == '<' || point == '>')
 		return true;
 	else
 		return false;

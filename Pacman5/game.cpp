@@ -3,7 +3,7 @@
 Game::Game()
 {
 	this->map = new Map();
-	this->player = player;
+	this->player = new Player();
 	this->mainLoop = true;
 }
 

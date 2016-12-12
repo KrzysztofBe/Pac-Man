@@ -11,7 +11,7 @@ public:
 	Game();
 	Ghost ghost;
 	Map *map;
-	Player player;
+	Player *player;
 	void start();
 	bool mainLoop;
 	void stop();

@@ -46,39 +46,34 @@ void Player::setPlayerPosition(Map *map)
 {
 	int temp_x = this->x + this->input.x;
 	int temp_y = this->y + this->input.y;
+	char point = map->getPoint(temp_x, temp_y);
 
-	switch (map->getPoint(temp_x, temp_y))
-	{
-	case '.':
-		map->setPoint(temp_x, temp_y, ' ');
-		this->score += 10;
-		this->x += this->input.x;
-		this->y += this->input.y;
-		break;
+	if (map->isPointAccessible(temp_x, temp_y, this)) {
+		if (point == '.' || point == ' ' || point == '0') {
+			map->setPoint(temp_x, temp_y, ' ');
+			this->x = temp_x;
+			this->y = temp_y;
+		}
+		if (point == '.') {
+			this->score += 10;
+		}
 
-	case ' ':
-		map->setPoint(temp_x, temp_y, ' ');
-		this->x += this->input.x;
-		this->y += this->input.y;
-		break;
+		if (point == '0') {
+			this->score += 100;
+			this->startBonus();
+		}
 
-	case '0':
-		map->setPoint(temp_x, temp_y, ' ');
-		this->score += 100;
-		this->x += this->input.x;
-		this->y += this->input.y;
-		this->startBonus();
-		break;
+		if (point == '>') {
+			this->x = 0;
+		}
 
-	case '<':
-		this->x = 29;
-		break;
+		if (point == '<') {
+			this->x = 29;
+		}
 
-	case '>':
-		this->x = 0;
-		break;
-
-	default: this->input = this->oldInput;
+	}
+	else {
+		this->input = this->oldInput;
 	}
 }
 

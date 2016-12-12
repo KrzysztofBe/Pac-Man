@@ -17,7 +17,7 @@ Ghost::Ghost(int x, int y, char symbol)
 	this->symbol = symbol;
 }
 
-void Ghost::setGhostPosition(Map *map, Ghost ghost) {
+void Ghost::setGhostPosition(Map *map) {
 	int x = this->x;
 	int y = this->y;
 	switch (rand() % 4) {
@@ -35,7 +35,7 @@ void Ghost::setGhostPosition(Map *map, Ghost ghost) {
 		break;
 	}
 
-	if (map->isPointAccessible(x, y, ghost)) {
+	if (map->isPointAccessible(x, y, *this)) {
 		this->x = x;
 		this->y = y;
 	}
