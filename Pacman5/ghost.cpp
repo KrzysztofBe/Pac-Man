@@ -49,7 +49,7 @@ void Ghost::setGhostPosition(Map *map, Player *player) {
 				int oppositePlayerY = floor((player->x - originX) * originSin + (player->y - originY) * originCos + originY);
 
 				// i sprawdzamy, ktory jest "najdalej"
-				pointsToCheck[i][2] = -map->euclideanDistance(pointsToCheck[i][0], pointsToCheck[i][1], oppositePlayerX, oppositePlayerY);
+				pointsToCheck[i][2] = map->euclideanDistance(pointsToCheck[i][0], pointsToCheck[i][1], oppositePlayerX, oppositePlayerY);
 			}
 			else {
 				// w przeciwnym wypadku, obliczamy dla kazdego dostepnego punktu - jak daleko jest gracz
