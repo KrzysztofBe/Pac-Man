@@ -16,6 +16,7 @@ Ghost::Ghost(int x, int y, char symbol)
 	this->x = x;
 	this->y = y;
 	this->symbol = symbol;
+	this->isDead = false;
 }
 
 void Ghost::setGhostPosition(Map *map, Player *player) {
