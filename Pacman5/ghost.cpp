@@ -16,6 +16,7 @@ Ghost::Ghost(int x, int y, char symbol)
 	this->x = x;
 	this->y = y;
 	this->symbol = symbol;
+	this->isDead = false;
 }
 
 void Ghost::setGhostPosition(Map *map, Player *player) {
@@ -36,8 +37,13 @@ void Ghost::setGhostPosition(Map *map, Player *player) {
 	for (int i = 0; i < 4; i++) {
 		// dla kazdego punktu - sprawdzamy, czy jest on osiagalny(czy mozna tam stanac), oraz czy jest poza jaskinia
 		if (map->isPointAccessible(pointsToCheck[i][0], pointsToCheck[i][1], this) && this->outsideLair) {
+			if (this->getDead()) {
+				int xToGo = 15;
+				int yToGo = 11;
+				pointsToCheck[i][2] = map->euclideanDistance(pointsToCheck[i][0], pointsToCheck[i][1], xToGo, yToGo);
+			}
 			// jezeli gracz ma bonus - duszki powinny uciekac
-			if (player->hasBonus) {
+			else if (player->hasBonus) {
 				// obliczamy sobie sin(180*) i cos(180*) - potrzebny do obrotu
 				float originSin = sin(180 * M_PI / 180);
 				float originCos = cos(180 * M_PI / 180);
