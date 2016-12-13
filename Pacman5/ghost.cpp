@@ -39,8 +39,8 @@ void Ghost::setGhostPosition(Map *map, Player *player) {
 		if (map->isPointAccessible(pointsToCheck[i][0], pointsToCheck[i][1], this) && this->outsideLair) {
 			// jezeli gracz ma bonus - duszki powinny uciekac
 			if (this->getDead()) {
-				int xToGo = 0;
-				int yToGo = 0;
+				int xToGo = 15;
+				int yToGo = 11;
 				pointsToCheck[i][2] = map->euclideanDistance(pointsToCheck[i][0], pointsToCheck[i][1], xToGo, yToGo);
 			}
 			else if (player->hasBonus) {
@@ -105,6 +105,7 @@ void Ghost::setGhostPosition(Map *map, Player *player) {
 	if (map->isPointAccessible(x, y, this)) {
 		this->x = x;
 		this->y = y;
+		this->movedFromLair();
 	}
 }
 
