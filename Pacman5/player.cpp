@@ -56,11 +56,13 @@ void Player::setPlayerPosition(Map *map)
 		}
 		if (point == '.') {
 			this->score += 10;
+			Beep(700, 100);
 		}
 
 		if (point == '0') {
 			this->score += 100;
 			this->startBonus();
+			Beep(500, 100);
 		}
 
 		if (point == '>') {

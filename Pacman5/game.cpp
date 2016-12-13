@@ -1,4 +1,5 @@
 #include "game.h"
+#include "windows.h"
 
 Game::Game()
 {
@@ -24,6 +25,14 @@ void Game::start()
 		this->map->draw(this->ghosts, *this->player);
 		this->detectCollisions();
 		this->player->endBonus();
+		Sleep(70);
+		if (this->player->hasBonus) {
+			Beep((rand() % 300) + 200, 100);
+		}
+		else
+		{
+			Beep((rand() % 200) + 500, 100);
+		}
 	}
 }
 

@@ -97,5 +97,4 @@ void Map::draw(vector<Ghost> ghosts, Player player)
 		cout << endl;
 	}
 	cout << "Score: " << player.score;
-	Sleep(150);
 }
