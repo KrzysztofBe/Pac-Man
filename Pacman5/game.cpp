@@ -25,7 +25,7 @@ void Game::start()
 		this->map->draw(this->ghosts, *this->player);
 		this->detectCollisions();
 		this->player->endBonus();
-		Sleep(70);
+		Sleep(30);
 		if (this->player->hasBonus) {
 			Beep((rand() % 300) + 200, 100);
 		}
@@ -46,7 +46,13 @@ void Game::detectCollisions()
 	for (vector<Ghost>::iterator it = ghosts.begin(); it != ghosts.end(); ++it) {
 		if ((this->player->x == it->x) && (this->player->y == it->y))
 		{
-			throw "Collision";
+			Ghost & ghost = *it;
+			if (this->player->hasBonus) {
+				ghost.setDead(true);
+			}
+			else {
+				throw "Collision";
+			}
 		}
 	}
 }
