@@ -16,25 +16,20 @@ Player::Player()
 	this->numberOfLives = 0;
 }
 
-
-void Player::setNumberOfLives(Player player)
+void Player::dies(int actualLives)
 {
-	this->numberOfLives = 3;
+	actualLives = this->numberOfLives - 1;
+}
 
-	if (player == dies)
-	{
-		numberOfLives -= 1;
-
-		if (numberOfLives == 0)
-		{
-			gameOver();
-		}
-	}
+void Player::setNumberOfLives(int lives)
+{
+	lives = 3;
+	this->numberOfLives = lives;
 }
 
 void Player::getNumberOfLives()
 {
-
+	this->numberOfLives;
 }
 
 
