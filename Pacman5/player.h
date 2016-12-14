@@ -7,6 +7,7 @@ class Map;
 class Player
 {
 private:
+	int numberOfLives;
 	int bonusStart;
 public:
 	Player();
@@ -14,6 +15,8 @@ public:
 	char symbol;
 	int score;
 	bool hasBonus;
+	void setNumberOfLives(Player player);
+	void getNumberOfLives();
 	void getPlayerInput();
 	void startBonus();
 	void endBonus();

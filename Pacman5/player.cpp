@@ -13,7 +13,29 @@ Player::Player()
 	this->symbol = 'C';
 	this->hasBonus = false;
 	this->bonusStart = 0;
+	this->numberOfLives = 0;
 }
+
+
+void Player::setNumberOfLives(Player player)
+{
+	this->numberOfLives = 3;
+
+	if (player == dies)
+	{
+		numberOfLives -= 1;
+	}
+}
+
+void Player::getNumberOfLives()
+{
+	if (numberOfLives == 0)
+	{
+		gameOver();
+	}
+}
+
+
 
 void Player::getPlayerInput()
 {
