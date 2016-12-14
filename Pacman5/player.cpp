@@ -24,15 +24,17 @@ void Player::setNumberOfLives(Player player)
 	if (player == dies)
 	{
 		numberOfLives -= 1;
+
+		if (numberOfLives == 0)
+		{
+			gameOver();
+		}
 	}
 }
 
 void Player::getNumberOfLives()
 {
-	if (numberOfLives == 0)
-	{
-		gameOver();
-	}
+
 }
 
 
