@@ -15,6 +15,8 @@ public:
 	char symbol;
 	int score;
 	bool hasBonus;
+	int startX, startY;
+	void reset();
 	void setNumberOfLives(int lives);
 	void dies();
 	int getNumberOfLives();

@@ -15,7 +15,17 @@ Ghost::Ghost(int x, int y, char symbol)
 {
 	this->x = x;
 	this->y = y;
+	this->startX = x;
+	this->startY = y;
 	this->symbol = symbol;
+	this->isDead = false;
+}
+
+void Ghost::reset()
+{
+	this->x = this->startX;
+	this->y = this->startY;
+	this->outsideLair = false;
 	this->isDead = false;
 }
 
