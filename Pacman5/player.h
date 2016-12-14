@@ -16,8 +16,8 @@ public:
 	int score;
 	bool hasBonus;
 	void setNumberOfLives(int lives);
-	void dies(int actualLives);
-	void getNumberOfLives();
+	void dies();
+	int getNumberOfLives();
 	void getPlayerInput();
 	void startBonus();
 	void endBonus();

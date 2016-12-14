@@ -16,20 +16,19 @@ Player::Player()
 	this->numberOfLives = 0;
 }
 
-void Player::dies(int actualLives)
+void Player::dies()
 {
-	actualLives = this->numberOfLives - 1;
+	this->numberOfLives - 1;
 }
 
 void Player::setNumberOfLives(int lives)
 {
-	lives = 3;
 	this->numberOfLives = lives;
 }
 
-void Player::getNumberOfLives()
+int Player::getNumberOfLives()
 {
-	this->numberOfLives;
+	return this->numberOfLives;
 }
 
 
