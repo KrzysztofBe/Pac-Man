@@ -18,6 +18,7 @@ Ghost::Ghost(int x, int y, char symbol)
 	this->startX = x;
 	this->startY = y;
 	this->symbol = symbol;
+	this->outsideLair = false;
 	this->isDead = false;
 }
 
@@ -110,6 +111,7 @@ void Ghost::setGhostPosition(Map *map, Player *player) {
 	if (map->isPointAccessible(x, y, this)) {
 		this->x = x;
 		this->y = y;
+		this->movedFromLair();
 	}
 }
 

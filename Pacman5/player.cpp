@@ -10,8 +10,8 @@ Player::Player()
 	this->x = 13;
 	this->y = 20;
 	this->score = 0;
-	this->startX = x;
-	this->startY = y;
+	this->startX = this->x;
+	this->startY = this->y;
 	this->symbol = 'C';
 	this->hasBonus = false;
 	this->bonusStart = 0;
@@ -27,6 +27,7 @@ void Player::reset()
 void Player::dies()
 {
 	this->numberOfLives -= 1;
+	this->reset();
 }
 
 void Player::setNumberOfLives(int lives)

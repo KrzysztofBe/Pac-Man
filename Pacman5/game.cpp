@@ -51,8 +51,22 @@ void Game::detectCollisions()
 				ghost.setDead(true);
 			}
 			else {
-				throw "Collision";
+				this->playerDied();
 			}
 		}
+	}
+}
+
+void Game::playerDied()
+{
+	this->player->dies();
+	if (this->player->getNumberOfLives() <= 0) {
+		system("cls");
+		throw "Game Over";
+	}
+	for (vector<Ghost>::iterator it = ghosts.begin(); it != ghosts.end(); ++it)
+	{
+		Ghost & ghost = *it;
+		ghost.reset();
 	}
 }
