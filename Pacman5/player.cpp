@@ -41,7 +41,6 @@ int Player::getNumberOfLives()
 }
 
 
-
 void Player::getPlayerInput()
 {
 	this->oldInput = this->input;

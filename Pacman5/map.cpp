@@ -42,7 +42,7 @@ bool Map::isPointAccessible(int x, int y, Ghost *ghost) {
 	if (point == '.' || point == ' ' || point == '0' || point == '<' || point == '>')
 		return true;
 	else if ((point == '+') && (!ghost->outsideLair))
-		return false;
+		return true;
 	else if (point == '+' && ghost->getDead())
 		return true;
 	else
