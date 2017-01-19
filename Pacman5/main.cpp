@@ -78,7 +78,7 @@ void mapaa()
 						texture->loadFromFile("podlogaa.png");
 						break;
 					}
-					sprite->setTexture.tekstura(texture);
+					sprite->setTexture(*texture);
 					spriteMap[j][i] = sprite;
 				}
 			}
