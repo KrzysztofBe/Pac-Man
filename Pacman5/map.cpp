@@ -28,6 +28,7 @@ Map::Map()
 	//w zmiennej "j" trzymamy aktualna pozycje
 }
 
+
 float Map::euclideanDistance(int x1, int y1, int x2, int y2)
 {
 	float wynik;
