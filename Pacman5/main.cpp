@@ -11,40 +11,6 @@ sf::Sprite *spriteMap[Map::map_size_y][Map::map_size_x];
 
 void mapaa()
 {
-
-	sf::Texture podloga;
-	podloga.loadFromFile("podlogaa.png");
-
-	sf::Texture prawy_gorny_rog;
-	prawy_gorny_rog.loadFromFile("prawy_gorny_rog.png");
-
-	sf::Texture prawy_dolny_rog;
-	prawy_dolny_rog.loadFromFile("prawy_dolny_rog.png");
-
-	sf::Texture lewy_dolny_rog;
-	lewy_dolny_rog.loadFromFile("lewy_dolny_rog.png");
-
-	sf::Texture lewy_gorny_rog;
-	lewy_gorny_rog.loadFromFile("lewy_gorny_rog.png");
-
-	sf::Texture sciana;
-	sciana.loadFromFile("sciana.png");
-
-	sf::Texture kulka;
-	kulka.loadFromFile("kulka.png");
-
-
-	sf::Sprite sp_podloga, sp_pg, sp_pd, sp_lg, sp_ld, sp_sciana, sp_kulka, tekstura;
-	sp_podloga.setTexture(podloga);
-	sp_sciana.setTexture(sciana);
-	sp_pg.setTexture(prawy_gorny_rog);
-	sp_pd.setTexture(prawy_dolny_rog);
-	sp_ld.setTexture(lewy_dolny_rog);
-	sp_lg.setTexture(lewy_gorny_rog);
-	sp_kulka.setTexture(kulka);
-	
-	int licznik = 1;
-
 	sf::RenderWindow oknoAplikacji(sf::VideoMode(1200, 900, 32), "Pac-Man");
 	while (oknoAplikacji.isOpen())
 	{
@@ -68,14 +34,56 @@ void mapaa()
 					sf::Sprite *sprite = new sf::Sprite();
 					sf::Texture *texture = new sf::Texture();
 					switch (map.mapBoard[i][j]) {
-					case '|':
-						texture->loadFromFile("sciana.png");
-						break;
 					case '.':
 						texture->loadFromFile("kulka.png");
 						break;
-					default:
+					case '<':
+						texture->loadFromFile("kulka.png");
+						break;
+					case '>':
+						texture->loadFromFile("kulka.png");
+						break;
+					case '1':
+						texture->loadFromFile("lewy_gorny_rog.png");
+						break;
+					case '2':
+						texture->loadFromFile("prawy_gorny_rog.png");
+						break;
+					case '3':
+						texture->loadFromFile("lewy_dolny_rog.png");
+						break;
+					case '4':
+						texture->loadFromFile("prawy_dolny_rog.png");
+						break;
+					case '5':
 						texture->loadFromFile("podlogaa.png");
+						break;
+					case '6':
+						texture->loadFromFile("sciana.png");
+						break;
+					case '7':
+						texture->loadFromFile("wieksza kulka.png");
+						break;
+					case '!':
+						texture->loadFromFile("lewy_gorny_rog_polowa.png");
+						break;
+					case '@':
+						texture->loadFromFile("prawy_gorny_rog_polowa.png");
+						break;
+					case '$':
+						texture->loadFromFile("prawy_dolny_rog_polowa.png");
+						break;
+					case '#':
+						texture->loadFromFile("lewy_dolny_rog_polowa.png");
+						break;
+					case '%':
+						texture->loadFromFile("podlogaa.png");
+						break;
+					case '^':
+						texture->loadFromFile("sciana.png");
+						break;
+					default:
+						texture->loadFromFile("nic.png");
 						break;
 					}
 					sprite->setTexture(*texture);
@@ -85,15 +93,13 @@ void mapaa()
 
 			for (int i = 0; i < Map::map_size_y; i++) {
 				for (int j = 0; j < Map::map_size_x; j++) {
-					spriteMap[j][i]->setPosition(j * 47, i * 47);
-					oknoAplikacji.draw(spriteMap[j][i]);
+					spriteMap[j][i]->setPosition(j * 27, i * 27);
+					oknoAplikacji.draw(*spriteMap[j][i]);
 				}
 			}
 
 		}
 	}
-			
-
 }
 
 void add_sprite()
