@@ -74,7 +74,6 @@ void Map::setPoint(int x, int y, char symbol)
 
 void Map::draw(vector<Ghost>ghosts, Player player)
 {
-
 	sf::RenderWindow oknoAplikacji(sf::VideoMode(1200, 900, 32), "Pac-Man");
 	while (oknoAplikacji.isOpen())
 	{
