@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "map.h"
+#include "player.h"
 
 int pozycja = 0;
 using namespace std;
@@ -28,6 +29,7 @@ void mapaa()
 			}
 
 			Map map;
+			Player player;
 
 			for (int i = 0; i < Map::map_size_y; i++) {
 				for (int j = 0; j < Map::map_size_x; j++) {
@@ -82,6 +84,7 @@ void mapaa()
 					case '^':
 						texture->loadFromFile("sciana.png");
 						break;
+
 					default:
 						texture->loadFromFile("nic.png");
 						break;

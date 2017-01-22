@@ -1,4 +1,5 @@
 #include <iostream>
+#include <SFML/Graphics.hpp>
 #include <vector>
 #include <string>
 #include <fstream>
@@ -69,7 +70,6 @@ char Map::getPoint(int x, int y)
 void Map::setPoint(int x, int y, char symbol)
 {
 	this->mapBoard[y][x] = symbol;
-
 }
 
 void Map::draw(vector<Ghost> ghosts, Player player)

@@ -13,6 +13,7 @@ public:
 	Player();
 	int x, y;
 	char symbol;
+	sf::Sprite newSymbol;
 	int score;
 	bool hasBonus;
 	int startX, startY;

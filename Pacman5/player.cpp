@@ -1,21 +1,29 @@
 #include <vector>
+#include <SFML/Graphics.hpp>
 #include "windows.h"
 #include "player.h"
 #include "map.h"
 #include "input.h"
 #include <time.h>
 
+
 Player::Player()
 {
+	sf::Texture *pacman = new sf::Texture();
+	sf::Sprite *sprite = new sf::Sprite();
+	pacman->loadFromFile("pacman_lewo.png");
+	sprite->setTexture(*pacman);
+	this->newSymbol = sprite;
+
 	this->x = 13;
 	this->y = 20;
 	this->score = 0;
 	this->startX = this->x;
 	this->startY = this->y;
-	this->symbol = 'C';
 	this->hasBonus = false;
 	this->bonusStart = 0;
 	this->numberOfLives = 0;
+	this->symbol = 'C';
 }
 
 void Player::reset()
@@ -82,13 +90,11 @@ void Player::setPlayerPosition(Map *map)
 		}
 		if (point == '.') {
 			this->score += 10;
-			Beep(700, 100);
 		}
 
 		if (point == '0') {
 			this->score += 100;
 			this->startBonus();
-			Beep(500, 100);
 		}
 
 		if (point == '>') {
@@ -109,7 +115,7 @@ void Player::startBonus()
 {
 	this->bonusStart = time(NULL);
 	this->hasBonus = true;
-	this->symbol = '@';
+	//this->symbol = '@';
 }
 
 void Player::endBonus()
@@ -118,6 +124,6 @@ void Player::endBonus()
 	if ((currentTime - this->bonusStart) > 12) {
 		this->bonusStart = 0;
 		this->hasBonus = false;
-		this->symbol = 'C';
+		//this->symbol = 'C';
 	}
 }
