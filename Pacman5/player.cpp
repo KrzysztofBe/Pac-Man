@@ -13,7 +13,7 @@ Player::Player()
 	sf::Sprite *sprite = new sf::Sprite();
 	pacman->loadFromFile("pacman_lewo.png");
 	sprite->setTexture(*pacman);
-	this->newSymbol = sprite;
+	this->newSymbol = *sprite;
 
 	this->x = 13;
 	this->y = 20;
