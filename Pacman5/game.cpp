@@ -22,7 +22,7 @@ void Game::start()
 		}
 		this->player->getPlayerInput();
 		this->player->setPlayerPosition(this->map);
-		this->map->draw(this->ghosts, *this->player);
+		this->map->draw();
 		this->detectCollisions();
 		this->player->endBonus();
 		Sleep(30);

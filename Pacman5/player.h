@@ -2,6 +2,7 @@
 #define __PLAYER_H
 class Map;
 #include "map.h"
+#include <SFML/Graphics.hpp>
 #include "input.h"
 
 class Player

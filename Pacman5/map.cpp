@@ -72,10 +72,104 @@ void Map::setPoint(int x, int y, char symbol)
 	this->mapBoard[y][x] = symbol;
 }
 
-void Map::draw(vector<Ghost> ghosts, Player player)
+void Map::draw()
 {
-	system("cls");
-	for (int y = 0; y < Map::map_size_y; y++) {
+	Player player;
+	sf::RenderWindow oknoAplikacji(sf::VideoMode(1200, 900, 32), "Pac-Man");
+	while (oknoAplikacji.isOpen())
+	{
+		sf::Event zdarzenie;
+		while (oknoAplikacji.pollEvent(zdarzenie))
+		{
+			oknoAplikacji.display();
+
+			if (zdarzenie.type == sf::Event::Closed)
+				oknoAplikacji.close();
+
+			if (zdarzenie.type == sf::Event::KeyPressed && zdarzenie.key.code == sf::Keyboard::Escape)
+			{
+				oknoAplikacji.close();
+			}
+
+			Map map;
+			Player player;
+
+			for (int i = 0; i < Map::map_size_y; i++) {
+				for (int j = 0; j < Map::map_size_x; j++) {
+					sf::Sprite *sprite = new sf::Sprite();
+					sf::Texture *texture = new sf::Texture();
+					switch (map.mapBoard[i][j]) {
+					case '.':
+						texture->loadFromFile("kulka.png");
+						break;
+					case '<':
+						texture->loadFromFile("kulka.png");
+						break;
+					case '>':
+						texture->loadFromFile("kulka.png");
+						break;
+					case '1':
+						texture->loadFromFile("lewy_gorny_rog.png");
+						break;
+					case '2':
+						texture->loadFromFile("prawy_gorny_rog.png");
+						break;
+					case '3':
+						texture->loadFromFile("lewy_dolny_rog.png");
+						break;
+					case '4':
+						texture->loadFromFile("prawy_dolny_rog.png");
+						break;
+					case '5':
+						texture->loadFromFile("podlogaa.png");
+						break;
+					case '6':
+						texture->loadFromFile("sciana.png");
+						break;
+					case '7':
+						texture->loadFromFile("wieksza kulka.png");
+						break;
+					case '!':
+						texture->loadFromFile("lewy_gorny_rog_polowa.png");
+						break;
+					case '@':
+						texture->loadFromFile("prawy_gorny_rog_polowa.png");
+						break;
+					case '$':
+						texture->loadFromFile("prawy_dolny_rog_polowa.png");
+						break;
+					case '#':
+						texture->loadFromFile("lewy_dolny_rog_polowa.png");
+						break;
+					case '%':
+						texture->loadFromFile("podlogaa.png");
+						break;
+					case '^':
+						texture->loadFromFile("sciana.png");
+						break;
+
+					default:
+						texture->loadFromFile("nic.png");
+						break;
+					}
+					sprite->setTexture(*texture);
+					player.newSymbol->setTexture(*texture);
+					spriteMap[j][i] = sprite;
+				}
+			}
+
+			for (int i = 0; i < Map::map_size_y; i++) {
+				for (int j = 0; j < Map::map_size_x; j++) {
+					spriteMap[j][i]->setPosition(j * 27, i * 27);
+					oknoAplikacji.draw(*spriteMap[j][i]);
+				}
+			}
+
+		}
+	}
+}
+
+	/*for (int y = 0; y < Map::map_size_y; y++) {
 		for (int x = 0; x < Map::map_size_x; x++) {
 			if ((player.x == x) && (player.y == y)) {
 				cout << player.symbol;
@@ -97,5 +191,4 @@ void Map::draw(vector<Ghost> ghosts, Player player)
 		}
 		cout << endl;
 	}
-	cout << "Score: " << player.score;
-}
+	cout << "Score: " << player.score;*/
