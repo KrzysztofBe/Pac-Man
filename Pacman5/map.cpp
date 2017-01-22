@@ -162,7 +162,7 @@ void Map::draw(vector<Ghost>ghosts, Player player)
 					oknoAplikacji.draw(*spriteMap[j][i]);
 						if ((player.x == j) && (player.y == i)) {
 							player.newSymbol->setPosition(player.x * 27, player.y * 27);
-							oknoAplikacji.draw(player.newSymbol);
+							oknoAplikacji.draw(*player.newSymbol);
 						}
 				}
 			}
