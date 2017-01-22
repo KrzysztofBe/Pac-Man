@@ -150,6 +150,7 @@ void Map::draw(vector<Ghost>ghosts, Player player)
 						texture->loadFromFile("nic.png");
 						break;
 					}
+					player.newSymbol->setPosition(player.x * 27, player.y * 27);
 					sprite->setTexture(*texture);
 					spriteMap[j][i] = sprite;
 				}
@@ -159,19 +160,18 @@ void Map::draw(vector<Ghost>ghosts, Player player)
 				for (int j = 0; j < Map::map_size_x; j++) {
 					spriteMap[j][i]->setPosition(j * 27, i * 27);
 					oknoAplikacji.draw(*spriteMap[j][i]);
+						if ((player.x == j) && (player.y == i)) {
+							player.newSymbol->setPosition(player.x * 27, player.y * 27);
+							oknoAplikacji.draw(player.newSymbol);
+						}
 				}
 			}
+
 
 		}
 	}
 }
-
-	/*for (int y = 0; y < Map::map_size_y; y++) {
-		for (int x = 0; x < Map::map_size_x; x++) {
-			if ((player.x == x) && (player.y == y)) {
-				cout << player.symbol;
-			}
-			else {
+			/*else {
 				bool ghostDrawn = false;
 				for (vector<Ghost>::iterator it = ghosts.begin(); it != ghosts.end(); ++it) {
 					if (it->x == x && it->y == y && !ghostDrawn)
