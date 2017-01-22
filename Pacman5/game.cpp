@@ -22,10 +22,9 @@ void Game::start()
 		}
 		this->player->getPlayerInput();
 		this->player->setPlayerPosition(this->map);
-		this->map->draw();
+		this->map->draw(this->ghosts, *this->player);
 		this->detectCollisions();
-		this->player->endBonus();
-		Sleep(30);
+		this->player->endBonus();		Sleep(30);
 		if (this->player->hasBonus) {
 			Beep((rand() % 300) + 200, 100);
 		}

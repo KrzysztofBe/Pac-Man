@@ -72,9 +72,9 @@ void Map::setPoint(int x, int y, char symbol)
 	this->mapBoard[y][x] = symbol;
 }
 
-void Map::draw()
+void Map::draw(vector<Ghost>ghosts, Player player)
 {
-	Player player;
+
 	sf::RenderWindow oknoAplikacji(sf::VideoMode(1200, 900, 32), "Pac-Man");
 	while (oknoAplikacji.isOpen())
 	{
@@ -92,7 +92,6 @@ void Map::draw()
 			}
 
 			Map map;
-			Player player;
 
 			for (int i = 0; i < Map::map_size_y; i++) {
 				for (int j = 0; j < Map::map_size_x; j++) {
@@ -153,7 +152,6 @@ void Map::draw()
 						break;
 					}
 					sprite->setTexture(*texture);
-					player.newSymbol->setTexture(*texture);
 					spriteMap[j][i] = sprite;
 				}
 			}
