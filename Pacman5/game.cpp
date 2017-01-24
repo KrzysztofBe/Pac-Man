@@ -27,11 +27,6 @@ void Game::start()
 		this->player->endBonus();
 		Sleep(30);
 		if (this->player->hasBonus) {
-			Beep((rand() % 300) + 200, 100);
-		}
-		else
-		{
-			Beep((rand() % 200) + 500, 100);
 		}
 	}
 }

@@ -25,6 +25,6 @@ public:
 	float euclideanDistance(int x1, int y1, int x2, int y2);
 	char getPoint(int x, int y);
 	void setPoint(int x, int y, char symbol);
-	void draw(vector<Ghost>ghosts, Player player);
+	void draw(vector<Ghost>ghosts, Player player, sf::RenderWindow *window);
 };
 #endif

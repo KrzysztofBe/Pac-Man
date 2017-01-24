@@ -22,7 +22,7 @@ public:
 	void setNumberOfLives(int lives);
 	void dies();
 	int getNumberOfLives();
-	void getPlayerInput();
+	void getPlayerInput(sf::Event event);
 	void startBonus();
 	void endBonus();
 	void setPlayerPosition(Map *map);

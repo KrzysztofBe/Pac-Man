@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include "game.h"
 #include "map.h"
 #include "player.h"
 
@@ -8,6 +9,7 @@ using namespace std;
 
 void add_sprite()
 {
+	Game game;
 	Map map;
 
 	sf::Texture startGame_blue;
@@ -104,15 +106,37 @@ void add_sprite()
 
 			if (pozycja == -1 && zdarzenie.type == sf::Event::KeyPressed && zdarzenie.key.code == sf::Keyboard::Return)
 			{
-				map.draw();
+				game.start();
 			}
 		}
 	}
 }
 
-int main()
+int main() 
 {
-	add_sprite();
+	sf::RenderWindow application(sf::VideoMode(1200, 800, 32), "Pac-Man");
+	Game *game = new Game();
+
+	while (application.isOpen()) {
+		sf::Event event;
+		while (application.pollEvent(event)) {
+			// When Escape or window is closed - close application
+			if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Escape))
+				application.close();
+			if (event.type == sf::Event::Closed)
+				application.close();
+
+			for (vector<Ghost>::iterator it = game->ghosts.begin(); it != game->ghosts.end(); ++it) {
+				it->setGhostPosition(game->map, game->player);
+			}
+			game->player->getPlayerInput(event);
+			game->player->setPlayerPosition(game->map);
+			game->detectCollisions();
+			game->player->endBonus();
+		}
+		//after events are processed - draw map
+		game->map->draw(game->ghosts, *game->player, &application);
+	}
 
 	return 0;
 }

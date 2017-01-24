@@ -16,14 +16,14 @@ Player::Player()
 	this->newSymbol = sprite;
 
 	this->x = 13;
-	this->y = 20;
+	this->y = 23;
 	this->score = 0;
 	this->startX = this->x;
 	this->startY = this->y;
 	this->hasBonus = false;
 	this->bonusStart = 0;
 	this->numberOfLives = 0;
-	this->symbol = 'C';
+	//this->symbol = 'C';
 }
 
 void Player::reset()
@@ -49,31 +49,30 @@ int Player::getNumberOfLives()
 }
 
 
-void Player::getPlayerInput()
+void Player::getPlayerInput(sf::Event event)
 {
 	this->oldInput = this->input;
 
-	if (GetAsyncKeyState(VK_LEFT) != 0)
-	 {
-	 	this->input.x = -1;
-	 	this->input.y = 0;
-	 }
-	 if (GetAsyncKeyState(VK_RIGHT) != 0)
-	 {
-	 	this->input.x = 1;
-	 	this->input.y = 0;
-	 }
-	 if (GetAsyncKeyState(VK_UP) != 0)
-	 {
-	 	this->input.x = 0;
-	 	this->input.y = -1;
-	 }
-	 if (GetAsyncKeyState(VK_DOWN) != 0)
-	 {
-	 	this->input.x = 0;
-	 	this->input.y = 1;
-	 }
-
+	if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Left))
+	{
+		this->input.x = -1;
+		this->input.y = 0;
+	}
+	if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Right))
+	{
+		this->input.x = 1;
+		this->input.y = 0;
+	}
+	if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Up))
+	{
+		this->input.x = 0;
+		this->input.y = -1;
+	}
+	if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Down))
+	{
+		this->input.x = 0;
+		this->input.y = 1;
+	}
 }
 
 void Player::setPlayerPosition(Map *map)

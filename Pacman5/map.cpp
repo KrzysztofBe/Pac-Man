@@ -6,6 +6,7 @@
 #include "windows.h"
 #include "map.h"
 #include "ghost.h"
+#include "game.h"
 #include "player.h"
 using namespace std;
 
@@ -72,120 +73,80 @@ void Map::setPoint(int x, int y, char symbol)
 	this->mapBoard[y][x] = symbol;
 }
 
-void Map::draw(vector<Ghost>ghosts, Player player)
+void Map::draw(vector<Ghost>ghosts, Player player, sf::RenderWindow *window)
 {
-	sf::RenderWindow oknoAplikacji(sf::VideoMode(1200, 900, 32), "Pac-Man");
-	while (oknoAplikacji.isOpen())
-	{
-		sf::Event zdarzenie;
-		while (oknoAplikacji.pollEvent(zdarzenie))
-		{
-			oknoAplikacji.display();
+	for (int i = 0; i < Map::map_size_y; i++) {
+		for (int j = 0; j < Map::map_size_x; j++) {
+			sf::Sprite *sprite = new sf::Sprite();
+			sf::Texture *texture = new sf::Texture();
+			switch (this->mapBoard[i][j]) {
+			case '.':
+				texture->loadFromFile("kulka.png");
+				break;
+			case '<':
+				texture->loadFromFile("kulka.png");
+				break;
+			case '>':
+				texture->loadFromFile("kulka.png");
+				break;
+			case '1':
+				texture->loadFromFile("lewy_gorny_rog.png");
+				break;
+			case '2':
+				texture->loadFromFile("prawy_gorny_rog.png");
+				break;
+			case '3':
+				texture->loadFromFile("lewy_dolny_rog.png");
+				break;
+			case '4':
+				texture->loadFromFile("prawy_dolny_rog.png");
+				break;
+			case '5':
+				texture->loadFromFile("podlogaa.png");
+				break;
+			case '6':
+				texture->loadFromFile("sciana.png");
+				break;
+			case '7':
+				texture->loadFromFile("wieksza kulka.png");
+				break;
+			case '!':
+				texture->loadFromFile("lewy_gorny_rog_polowa.png");
+				break;
+			case '@':
+				texture->loadFromFile("prawy_gorny_rog_polowa.png");
+				break;
+			case '$':
+				texture->loadFromFile("prawy_dolny_rog_polowa.png");
+				break;
+			case '#':
+				texture->loadFromFile("lewy_dolny_rog_polowa.png");
+				break;
+			case '%':
+				texture->loadFromFile("podlogaa.png");
+				break;
+			case '^':
+				texture->loadFromFile("sciana.png");
+				break;
 
-			if (zdarzenie.type == sf::Event::Closed)
-				oknoAplikacji.close();
-
-			if (zdarzenie.type == sf::Event::KeyPressed && zdarzenie.key.code == sf::Keyboard::Escape)
-			{
-				oknoAplikacji.close();
+			default:
+				texture->loadFromFile("nic.png");
+				break;
 			}
+			player.newSymbol->setPosition(player.x * 27, player.y * 27);
+			sprite->setTexture(*texture);
+			spriteMap[j][i] = sprite;
+		}
+	}
 
-			Map map;
-
-			for (int i = 0; i < Map::map_size_y; i++) {
-				for (int j = 0; j < Map::map_size_x; j++) {
-					sf::Sprite *sprite = new sf::Sprite();
-					sf::Texture *texture = new sf::Texture();
-					switch (map.mapBoard[i][j]) {
-					case '.':
-						texture->loadFromFile("kulka.png");
-						break;
-					case '<':
-						texture->loadFromFile("kulka.png");
-						break;
-					case '>':
-						texture->loadFromFile("kulka.png");
-						break;
-					case '1':
-						texture->loadFromFile("lewy_gorny_rog.png");
-						break;
-					case '2':
-						texture->loadFromFile("prawy_gorny_rog.png");
-						break;
-					case '3':
-						texture->loadFromFile("lewy_dolny_rog.png");
-						break;
-					case '4':
-						texture->loadFromFile("prawy_dolny_rog.png");
-						break;
-					case '5':
-						texture->loadFromFile("podlogaa.png");
-						break;
-					case '6':
-						texture->loadFromFile("sciana.png");
-						break;
-					case '7':
-						texture->loadFromFile("wieksza kulka.png");
-						break;
-					case '!':
-						texture->loadFromFile("lewy_gorny_rog_polowa.png");
-						break;
-					case '@':
-						texture->loadFromFile("prawy_gorny_rog_polowa.png");
-						break;
-					case '$':
-						texture->loadFromFile("prawy_dolny_rog_polowa.png");
-						break;
-					case '#':
-						texture->loadFromFile("lewy_dolny_rog_polowa.png");
-						break;
-					case '%':
-						texture->loadFromFile("podlogaa.png");
-						break;
-					case '^':
-						texture->loadFromFile("sciana.png");
-						break;
-
-					default:
-						texture->loadFromFile("nic.png");
-						break;
-					}
-					player.newSymbol->setPosition(player.x * 27, player.y * 27);
-					sprite->setTexture(*texture);
-					spriteMap[j][i] = sprite;
-				}
+	for (int i = 0; i < Map::map_size_y; i++) {
+		for (int j = 0; j < Map::map_size_x; j++) {
+			spriteMap[j][i]->setPosition(j * 27, i * 27);
+			window->draw(*spriteMap[j][i]);
+			if ((player.x == j) && (player.y == i)) {
+				player.newSymbol->setPosition(player.x * 27, player.y * 27);
+				window->draw(*player.newSymbol);
 			}
-
-			for (int i = 0; i < Map::map_size_y; i++) {
-				for (int j = 0; j < Map::map_size_x; j++) {
-					spriteMap[j][i]->setPosition(j * 27, i * 27);
-					oknoAplikacji.draw(*spriteMap[j][i]);
-						if ((player.x == j) && (player.y == i)) {
-							player.newSymbol->setPosition(player.x * 27, player.y * 27);
-							oknoAplikacji.draw(*player.newSymbol);
-						}
-				}
-			}
-
-
 		}
 	}
 }
-			/*else {
-				bool ghostDrawn = false;
-				for (vector<Ghost>::iterator it = ghosts.begin(); it != ghosts.end(); ++it) {
-					if (it->x == x && it->y == y && !ghostDrawn)
-					{
-						ghostDrawn = true;
-						cout << it->symbol;
-					}
-				}
-				if (!ghostDrawn)
-				{
-					cout << this->getPoint(x, y);
-				}
-			}
-		}
-		cout << endl;
-	}
-	cout << "Score: " << player.score;*/
