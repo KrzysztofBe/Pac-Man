@@ -2,6 +2,7 @@
 #define __GHOST_H
 class Map;
 #include "map.h"
+#include <SFML/Graphics.hpp>
 
 class Ghost
 {
@@ -11,6 +12,9 @@ public:
 	Ghost();
 	Ghost(int x, int y, char symbol);
 	bool outsideLair;
+	sf::Sprite *newSymbol1;
+	sf::Sprite *newSymbol2;
+	sf::Sprite *newSymbol3;
 	int startX, startY;
 	void reset();
 	void setGhostPosition(Map *map, Player *player);

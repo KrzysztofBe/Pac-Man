@@ -13,6 +13,24 @@ Ghost::Ghost()
 
 Ghost::Ghost(int x, int y, char symbol)
 {
+	sf::Texture *ghost1 = new sf::Texture();
+	sf::Sprite *sprite1 = new sf::Sprite();
+	ghost1->loadFromFile("duszek1.png");
+	sprite1->setTexture(*ghost1);
+	this->newSymbol1 = sprite1;
+
+	sf::Texture *ghost2 = new sf::Texture();
+	sf::Sprite *sprite2 = new sf::Sprite();
+	ghost2->loadFromFile("duszek2.png");
+	sprite2->setTexture(*ghost2);
+	this->newSymbol2 = sprite2;
+
+	sf::Texture *ghost3 = new sf::Texture();
+	sf::Sprite *sprite3 = new sf::Sprite();
+	ghost3->loadFromFile("duszek3.png");
+	sprite3->setTexture(*ghost3);
+	this->newSymbol3 = sprite3;
+
 	this->x = x;
 	this->y = y;
 	this->startX = x;
