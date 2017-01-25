@@ -57,21 +57,25 @@ void Player::getPlayerInput(sf::Event event)
 	{
 		this->input.x = -1;
 		this->input.y = 0;
+		this->newSymbol.setRotation(x = 0);
 	}
 	if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Right))
 	{
 		this->input.x = 1;
 		this->input.y = 0;
+		this->newSymbol.setRotation(x = 180);
 	}
 	if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Up))
 	{
 		this->input.x = 0;
 		this->input.y = -1;
+		this->newSymbol.setRotation(x = 90);
 	}
 	if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Down))
 	{
 		this->input.x = 0;
 		this->input.y = 1;
+		this->newSymbol.setRotation(x = 270);
 	}
 }
 

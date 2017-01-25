@@ -115,6 +115,7 @@ void add_sprite()
 int main() 
 {
 	sf::RenderWindow application(sf::VideoMode(1200, 800, 32), "Pac-Man");
+	application.setFramerateLimit(60);
 	Game *game = new Game();
 
 	while (application.isOpen()) {

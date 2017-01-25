@@ -75,6 +75,7 @@ void Map::setPoint(int x, int y, char symbol)
 
 void Map::draw(vector<Ghost>ghosts, Player player, sf::RenderWindow *window)
 {
+	window->clear();
 	for (int i = 0; i < Map::map_size_y; i++) {
 		for (int j = 0; j < Map::map_size_x; j++) {
 			sf::Sprite *sprite = new sf::Sprite();
@@ -149,4 +150,5 @@ void Map::draw(vector<Ghost>ghosts, Player player, sf::RenderWindow *window)
 			}
 		}
 	}
+	window->display();
 }
