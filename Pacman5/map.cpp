@@ -148,7 +148,7 @@ void Map::draw(vector<Ghost>ghosts, Player player, sf::RenderWindow *window)
 				window->draw(*player.newSymbol);
 			}
 			for (vector<Ghost>::iterator it = ghosts.begin(); it != ghosts.end(); ++it) {
-				if ((it->x * 27== j) && (it->y * 27 == i)) {
+				if ((it->x== j) && (it->y== i)) {
 					it->newSymbol->setPosition(it->x * 27, it->y * 27);
 					window->draw(*it->newSymbol);
 				}
