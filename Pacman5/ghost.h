@@ -10,11 +10,9 @@ private:
 	bool isDead;
 public:
 	Ghost();
-	Ghost(int x, int y, char symbol);
+	Ghost(int x, int y, char symbol, const char *ghostFile);
 	bool outsideLair;
-	sf::Sprite *newSymbol1;
-	sf::Sprite *newSymbol2;
-	sf::Sprite *newSymbol3;
+	sf::Sprite *newSymbol;
 	int startX, startY;
 	void reset();
 	void setGhostPosition(Map *map, Player *player);

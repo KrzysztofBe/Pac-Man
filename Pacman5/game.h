@@ -18,7 +18,7 @@ public:
 	void playerDied();
 	void stop();
 	vector<Ghost> ghosts;
-	void addGhost(int x, int y, char symbol);
+	void addGhost(int x, int y, char symbol, const char *ghostFile);
 
 };
 

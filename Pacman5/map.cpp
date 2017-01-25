@@ -108,7 +108,7 @@ void Map::draw(vector<Ghost>ghosts, Player player, sf::RenderWindow *window)
 			case '6':
 				texture->loadFromFile("sciana.png");
 				break;
-			case '7':
+			case '0':
 				texture->loadFromFile("wieksza kulka.png");
 				break;
 			case '!':
@@ -134,7 +134,6 @@ void Map::draw(vector<Ghost>ghosts, Player player, sf::RenderWindow *window)
 				texture->loadFromFile("nic.png");
 				break;
 			}
-			player.newSymbol->setPosition(player.x * 27, player.y * 27);
 			sprite->setTexture(*texture);
 			spriteMap[j][i] = sprite;
 		}
@@ -145,8 +144,14 @@ void Map::draw(vector<Ghost>ghosts, Player player, sf::RenderWindow *window)
 			spriteMap[j][i]->setPosition(j * 27, i * 27);
 			window->draw(*spriteMap[j][i]);
 			if ((player.x == j) && (player.y == i)) {
-				player.newSymbol->setPosition(player.x * 27, player.y * 27);
+				player.newSymbol->setPosition(player.x * 27 + 23.5f, player.y * 27 + 23.5f);
 				window->draw(*player.newSymbol);
+			}
+			for (vector<Ghost>::iterator it = ghosts.begin(); it != ghosts.end(); ++it) {
+				if ((it->x * 27== j) && (it->y * 27 == i)) {
+					it->newSymbol->setPosition(it->x * 27, it->y * 27);
+					window->draw(*it->newSymbol);
+				}
 			}
 		}
 	}

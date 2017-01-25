@@ -8,9 +8,9 @@ Game::Game()
 	this->mainLoop = true;
 }
 
-void Game::addGhost(int x, int y, char symbol)
+void Game::addGhost(int x, int y, char symbol, const char *ghostFile)
 {
-	this->ghosts.push_back(Ghost(x, y, symbol));
+	this->ghosts.push_back(Ghost(x, y, symbol, ghostFile));
 }
 
 
