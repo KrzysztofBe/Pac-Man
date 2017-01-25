@@ -117,6 +117,9 @@ int main()
 	sf::RenderWindow application(sf::VideoMode(1200, 800, 32), "Pac-Man");
 	application.setFramerateLimit(60);
 	Game *game = new Game();
+	game->addGhost(11, 13, 'I', "duszek1.png");
+	game->addGhost(12, 14, 'P', "duszek2.png");
+	game->addGhost(15, 13, 'Z', "duszek3.png");
 
 	while (application.isOpen()) {
 		sf::Event event;

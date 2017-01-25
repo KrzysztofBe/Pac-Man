@@ -14,7 +14,6 @@ Player::Player()
 	pacman->loadFromFile("pacman_lewo.png");
 	sprite->setTexture(*pacman);
 	this->newSymbol = sprite;
-	this->newSymbol->setOrigin(13.5f, 13.5f);
 
 	this->x = 13;
 	this->y = 23;
@@ -56,31 +55,35 @@ void Player::getPlayerInput(sf::Event event)
 
 	if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Left))
 	{
+		sf::Texture *pacman = new sf::Texture();
+		pacman->loadFromFile("pacman_lewo.png");
 		this->input.x = -1;
 		this->input.y = 0;
-		this->newSymbol->setRotation(0);
-		this->newSymbol->setOrigin(13.5f, 13.5f);
+		this->newSymbol->setTexture(*pacman);
 	}
 	if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Right))
 	{
+		sf::Texture *pacman = new sf::Texture();
+		pacman->loadFromFile("pacman_prawo.png");
 		this->input.x = 1;
 		this->input.y = 0;
-		this->newSymbol->setRotation(180);
-		this->newSymbol->setOrigin(13.5f, 13.5f);
+		this->newSymbol->setTexture(*pacman);
 	}
 	if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Up))
 	{
+		sf::Texture *pacman = new sf::Texture();
+		pacman->loadFromFile("pacman_gora.png");
 		this->input.x = 0;
 		this->input.y = -1;
-		this->newSymbol->setRotation(90);
-		this->newSymbol->setOrigin(13.5f, 13.5f);
+		this->newSymbol->setTexture(*pacman);
 	}
 	if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Down))
 	{
+		sf::Texture *pacman = new sf::Texture();
+		pacman->loadFromFile("pacman_dol.png");
 		this->input.x = 0;
 		this->input.y = 1;
-		this->newSymbol->setRotation(270);
-		this->newSymbol->setOrigin(13.5f, 13.5f);
+		this->newSymbol->setTexture(*pacman);
 	}
 }
 
