@@ -14,6 +14,7 @@ Player::Player()
 	pacman->loadFromFile("pacman_lewo.png");
 	sprite->setTexture(*pacman);
 	this->newSymbol = sprite;
+	this->newSymbol->setOrigin(23.5f, 23.5f);
 
 	this->x = 13;
 	this->y = 23;
@@ -57,25 +58,25 @@ void Player::getPlayerInput(sf::Event event)
 	{
 		this->input.x = -1;
 		this->input.y = 0;
-		this->newSymbol.setRotation(10);
+		this->newSymbol->setRotation(0);
 	}
 	if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Right))
 	{
 		this->input.x = 1;
 		this->input.y = 0;
-		this->newSymbol.setRotation(180);
+		this->newSymbol->setRotation(180);
 	}
 	if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Up))
 	{
 		this->input.x = 0;
 		this->input.y = -1;
-		this->newSymbol.setRotation(90);
+		this->newSymbol->setRotation(90);
 	}
 	if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Down))
 	{
 		this->input.x = 0;
 		this->input.y = 1;
-		this->newSymbol.setRotation(270);
+		this->newSymbol->setRotation(270);
 	}
 }
 
