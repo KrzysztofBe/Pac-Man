@@ -14,7 +14,7 @@ void Game::addGhost(int x, int y, char symbol)
 }
 
 
-void Game::start()
+/*void Game::start()
 {
 	while (this->mainLoop == true) {
 		for (vector<Ghost>::iterator it = this->ghosts.begin(); it != this->ghosts.end(); ++it) {
@@ -29,7 +29,7 @@ void Game::start()
 		if (this->player->hasBonus) {
 		}
 	}
-}
+}*/
 
 void Game::stop()
 {
