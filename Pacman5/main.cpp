@@ -5,7 +5,6 @@
 
 int pozycja = 0;
 using namespace std;
-// TEN PROGRAM SSIE KOPYTKO
 
 void add_sprite()
 {
